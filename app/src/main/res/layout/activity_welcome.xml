@@ -8,12 +8,35 @@
         android:layout_height="match_parent"
         android:id="@+id/welcomeImg"
         android:background="@drawable/welcome"/>
+    <com.liuyujie.introduce.views.CircularImage
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/circleImg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:textColor="#fff"
+        android:id="@+id/androids"
+        android:layout_below="@+id/circleImg"
+        android:layout_centerHorizontal="true"
+        android:text="Android"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textColor="#fff"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/androids"
+        android:layout_centerHorizontal="true"
+        android:text="应用开发工程师"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFF"
-        android:textSize="30dp"
-        android:text="2.1"
         android:id="@+id/versiontxt"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

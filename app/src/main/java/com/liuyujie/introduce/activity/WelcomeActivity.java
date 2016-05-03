@@ -8,13 +8,18 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.liuyujie.introduce.R;
+import com.liuyujie.introduce.views.CircularImage;
 
 public class WelcomeActivity extends AppCompatActivity {
     private boolean isFirstIn = false;
-    private static final int TIME=2000;
+    private static final int TIME=3000;
     private static final int GO_HOME = 1000;
     private static final int GO_GUIDE = 1001;
     private TextView versionTxt;
@@ -47,14 +52,14 @@ public class WelcomeActivity extends AppCompatActivity {
     private void init(){
         SharedPreferences preferences = getSharedPreferences("firstIn", MODE_PRIVATE);
         isFirstIn = preferences.getBoolean("firstIn",true);
-        if(!isFirstIn){
-            mHandler.sendEmptyMessageDelayed(GO_HOME,TIME);
-        }else {
-            mHandler.sendEmptyMessageDelayed(GO_GUIDE,TIME);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("firstIn",false);
-            editor.commit();
-        }
+        mHandler.sendEmptyMessageDelayed(GO_GUIDE,TIME);
+//        if(!isFirstIn){
+//            mHandler.sendEmptyMessageDelayed(GO_HOME,TIME);
+//        }else {
+//            SharedPreferences.Editor editor = preferences.edit();
+//            editor.putBoolean("firstIn",false);
+//            editor.commit();
+//        }
 
     }
     @Override
@@ -63,6 +68,12 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         init();
         getVersion();
+        setPersonImg();
+    }
+
+    private void setPersonImg() {
+        CircularImage headImg = (CircularImage) findViewById(R.id.circleImg);
+        headImg.setImageResource(R.drawable.me);
     }
 
 
@@ -72,7 +83,7 @@ public class WelcomeActivity extends AppCompatActivity {
             PackageInfo packageInfo = packageManager.getPackageInfo(getPackageName(), 0);
             int versionCode = packageInfo.versionCode;
             versionTxt = (TextView) findViewById(R.id.versiontxt);
-            versionTxt.setText("V "+versionCode);
+            versionTxt.setText("2016/5/1  v"+(double)versionCode);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
